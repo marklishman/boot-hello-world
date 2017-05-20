@@ -1,5 +1,5 @@
 FROM frolvlad/alpine-oraclejdk8:slim
-VOLUME /tmp§
+VOLUME /tmp
 ADD /target/boot-hello-world-1.0-SNAPSHOT.jar app.jar
 RUN sh -c 'touch /app.jar'
 ENV JAVA_OPTS=""
