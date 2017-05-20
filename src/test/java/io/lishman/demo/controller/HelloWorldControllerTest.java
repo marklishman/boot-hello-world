@@ -1,7 +1,7 @@
 package io.lishman.demo.controller;
 
 
-import io.lishman.demo.service.TestService;
+import io.lishman.demo.service.MessageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +22,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class HelloWorldControllerTest {
 
     @MockBean
-    private TestService testService;
+    private MessageService messageService;
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     public void getHelloWorldMessage() throws Exception {
-        given(testService.message()).willReturn("my message");
+        given(messageService.message()).willReturn("my message");
 
         mockMvc.perform(get("/message"))
                 .andExpect(status().isOk())
