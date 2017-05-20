@@ -1,16 +1,23 @@
 package io.lishman.demo.controller;
 
+import io.lishman.demo.service.TestService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloWorldController {
 
-    @GetMapping("hello")
+    private TestService testService;
+
+    HelloWorldController(final TestService testService) {
+        this.testService = testService;
+    }
+
+    @GetMapping("message")
     public HelloWorldMessage getHelloWorldMessage() {
         return HelloWorldMessage
                 .builder()
-                .message("hello world")
+                .message(testService.message())
                 .build();
     }
 
